@@ -11,16 +11,18 @@ import GenerateScreen from 'src/screens/GenerateScreen';
 import MyPageScreen from 'src/screens/MyPageScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import SearchScreen from '../screens/SearchScreen';
 
 const ExploreStackNavigator = createStackNavigator(
   {
     Explore: {
       screen: ExploreScreen,
     },
+    Search: {
+      screen: SearchScreen,
+    },
   },
-  {
-    headerMode: 'none',
-  },
+  { headerMode: 'none' },
 );
 
 const MainBottomTabNavigator = createBottomTabNavigator(

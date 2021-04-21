@@ -1,13 +1,24 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Explore from './src/screens/explore';
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+} from 'react-native-safe-area-context';
+
+import MainNavigation from 'src/routes/MainNavigation';
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './src/store/reducers';
+
+const store = createStore(rootReducer);
 
 const App = () => {
   return (
-    <View>
-      <Text>Hello World</Text>
-      <Explore />
-    </View>
+    <Provider store={store}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <MainNavigation />
+      </SafeAreaProvider>
+    </Provider>
   );
 };
 

@@ -18,7 +18,7 @@ import { challengeCategories, level1Tags } from '../utils/ChallengeCategories';
 
 import allActions from 'src/store/actions';
 
-const ExploreScreen = () => {
+const ExploreScreen = ({ navigation }) => {
   const [banners, setBanners] = useState([]);
   const [tags, setTags] = useState([]);
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
@@ -35,6 +35,7 @@ const ExploreScreen = () => {
             data: { banners },
           },
         } = await apis.getBanners();
+        console.log(38, '---', banners);
         setBanners(banners);
 
         const {
@@ -92,8 +93,7 @@ const ExploreScreen = () => {
 
   return banners.length !== 0 ? (
     <SafeAreaView style={styles.container}>
-      <ExploreHeader />
-      <Text>Carousel</Text>
+      <ExploreHeader navigation={navigation} />
       <FlatList
         keyExtractor={item => item.title}
         data={renderComponents}
